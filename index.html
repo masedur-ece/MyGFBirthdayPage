@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday My Love 💖</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <audio id="bgMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Welcome Screen -->
+  <section class="intro">
+    <h1>🎉 Happy Birthday My Love 💕</h1>
+    <button id="startBtn">Click to Begin</button>
+  </section>
+
+  <!-- Message Section -->
+  <section class="message-section">
+    <h2 id="typewriter"></h2>
+    <button id="showPhotosBtn">🎁 Next Surprise</button>
+  </section>
+
+  <!-- Photo Slideshow Section -->
+  <section class="photo-section">
+    <div class="slideshow">
+      <img id="slideImage" src="photos/1.jpg" alt="Memory" />
+    </div>
+    <button id="finalBtn">💖 Final Surprise</button>
+  </section>
+
+  <!-- Fireworks / Surprise Section -->
+  <section class="final-section">
+    <canvas id="fireworks"></canvas>
+    <div class="final-message">
+      <h1>🌌 I Love You Forever 💕</h1>
+      <p>Every moment with you is my favorite memory. Happy Birthday My Princess 💗</p>
+      <button id="replayBtn">Replay Surprise ❤️</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

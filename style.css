@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+  color: white;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Intro Section */
+.intro {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 2s ease;
+}
+.intro h1 {
+  font-size: 2.5em;
+  text-shadow: 0 0 25px white;
+}
+#startBtn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: white;
+  color: #ff69b4;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: 0 0 20px white;
+}
+#startBtn:hover {
+  background: #ff69b4;
+  color: white;
+}
+
+/* Typewriter Section */
+.message-section {
+  display: none;
+  height: 100vh;
+  padding-top: 20%;
+}
+#typewriter {
+  width: 80%;
+  margin: auto;
+  font-size: 1.5em;
+  text-shadow: 0 0 15px white;
+}
+#showPhotosBtn {
+  margin-top: 40px;
+  padding: 12px 25px;
+  background: white;
+  color: #ff69b4;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+/* Photo Section */
+.photo-section {
+  display: none;
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+  overflow: hidden;
+}
+.slideshow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  position: relative;
+}
+.slideshow img {
+  max-width: 70%;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+  transition: transform 0.6s ease, box-shadow 0.6s ease, opacity 0.8s ease;
+  opacity: 0;
+  transform: scale(0.95);
+}
+.slideshow img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+.slideshow img:hover {
+  transform: scale(0.9);
+  box-shadow: 0 0 60px white;
+}
+#finalBtn {
+  background: white;
+  color: #ff69b4;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-size: 1em;
+  cursor: pointer;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Final Section */
+.final-section {
+  display: none;
+  height: 100vh;
+  background: black;
+  overflow: hidden;
+  position: relative;
+}
+.final-message {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  color: #ffb6c1;
+  text-shadow: 0 0 25px #ff69b4;
+}
+#replayBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #ff69b4;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Floating Hearts */
+.heart {
+  position: fixed;
+  color: pink;
+  animation: float 5s linear infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-800px) scale(0.5); opacity: 0; }
+}
