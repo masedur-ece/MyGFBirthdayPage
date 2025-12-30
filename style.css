@@ -458,3 +458,20 @@ button {
     margin-top: 4px;
   }
 }
+
+
+
+/* ===== FINAL ENGINEER MESSAGE ===== */
+
+.engineer-note {
+  margin-top: 18px;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #ffd6ea;
+  opacity: 0.9;
+  text-shadow: 0 0 12px rgba(255,105,180,0.6);
+  font-style: italic;
+}
+
+
