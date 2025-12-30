@@ -3,44 +3,179 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday My Love 💖</title>
+  <title>Happy Birthday ❤️</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio id="bgMusic" autoplay loop>
-    <source src="music.mp3" type="audio/mpeg" />
-  </audio>
 
-  <!-- Welcome Screen -->
-  <section class="intro">
-    <h1>🎉 Happy Birthday My Love 💕</h1>
-    <button id="startBtn">Click to Begin</button>
-  </section>
+<!-- Background Music -->
+<audio id="bgMusic" src="music.mp3" loop playsinline></audio>
 
-  <!-- Message Section -->
-  <section class="message-section">
-    <h2 id="typewriter"></h2>
-    <button id="showPhotosBtn">🎁 Next Surprise</button>
-  </section>
+<!-- INTRO -->
+<section id="intro" class="screen">
+  <h1>🎂 Happy Birthday ❤️</h1>
+  <button id="startBtn">Tap to Start 💖</button>
+</section>
 
-  <!-- Photo Slideshow Section -->
-  <section class="photo-section">
-    <div class="slideshow">
-      <img id="slideImage" src="photos/1.jpg" alt="Memory" />
+<!-- MESSAGE -->
+<section id="messageScreen" class="screen hidden">
+  <h2 id="typeText"></h2>
+  <button id="nextMsgBtn">Next 💌</button>
+</section>
+
+<!-- PHOTO SCREEN -->
+<section id="photoScreen" class="screen hidden">
+  <h2 class="photoTitle">Our Memories 💖</h2>
+
+  <div class="carousel-container">
+    <div class="carousel" id="memoryCarousel">
+
+      <!-- CARD 1 -->
+      <div class="memory-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="photos/1.jpg" alt="Memory 1" />
+          </div>
+          <div class="card-back">The day I fell for you ❤️</div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="memory-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="photos/2.jpg" alt="Memory 2" />
+          </div>
+          <div class="card-back">That smile I love 😊</div>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="memory-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="photos/3.jpg" alt="Memory 3" />
+          </div>
+          <div class="card-back">Every little moment ✨</div>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="memory-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="photos/4.jpg" alt="Memory 4" />
+          </div>
+          <div class="card-back">You make my world brighter 🌸</div>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="memory-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="photos/5.jpg" alt="Memory 5" />
+          </div>
+          <div class="card-back">Laughs, talks, memories 💕</div>
+        </div>
+      </div>
+
+      <!-- CARD 6 -->
+      <div class="memory-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="photos/6.jpg" alt="Memory 6" />
+          </div>
+          <div class="card-back">With you, everything feels right 🤍</div>
+        </div>
+      </div>
+
+      <!-- CARD 7 -->
+      <div class="memory-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="photos/7.jpg" alt="Memory 7" />
+          </div>
+          <div class="card-back">Us. Always ❤️</div>
+        </div>
+      </div>
+
     </div>
-    <button id="finalBtn">💖 Final Surprise</button>
-  </section>
+  </div>
 
-  <!-- Fireworks / Surprise Section -->
-  <section class="final-section">
-    <canvas id="fireworks"></canvas>
-    <div class="final-message">
-      <h1>🌌 I Love You Forever 💕</h1>
-      <p>Every moment with you is my favorite memory. Happy Birthday My Princess 💗</p>
-      <button id="replayBtn">Replay Surprise ❤️</button>
+  <button id="finalBtn">Final Surprise 💖</button>
+</section>
+
+<!-- OUR STORY TIMELINE -->
+<section id="storyScreen" class="screen hidden">
+
+  <h2 class="storyTitle">Our Story ✨</h2>
+
+  <div class="timeline">
+
+    <!-- STORY ITEM 1 -->
+    <div class="story-item">
+      <div class="gold-frame">
+        <img src="photos/us1.jpg" alt="Our First Meet">
+      </div>
+      <p class="story-text">
+        From strangers… to something beautiful 💖
+      </p>
     </div>
-  </section>
 
-  <script src="script.js"></script>
+    <!-- STORY ITEM 2 -->
+    <div class="story-item">
+      <div class="gold-frame">
+        <img src="photos/us2.jpg" alt="First Memory">
+      </div>
+      <p class="story-text">
+        Some moments change your whole life ✨
+      </p>
+    </div>
+
+    <!-- STORY ITEM 3 -->
+    <div class="story-item">
+      <div class="gold-frame glow-strong">
+        <img src="photos/us3.jpg" alt="Favorite Moment">
+      </div>
+      <p class="story-text">
+        My favorite chapter is you 🌸
+      </p>
+    </div>
+
+    <!-- STORY ITEM 4 -->
+    <div class="story-item">
+      <div class="gold-frame glow-max">
+        <img src="photos/us4.jpg" alt="Us Today">
+      </div>
+      <p class="story-text">
+        Us. Today. Tomorrow. Forever ❤️
+      </p>
+    </div>
+
+  </div>
+
+  <button id="storyNextBtn">One Last Surprise 💖</button>
+
+</section>
+
+
+<!-- FINAL SCREEN -->
+<section id="finalScreen" class="screen hidden">
+  <canvas id="fireworks"></canvas>
+
+  <div class="finalMessage">
+    <h1>Happy Birthday My Love ❤️</h1>
+    <p>
+      You are my today,<br />
+      my tomorrow,<br />
+      and my forever 🌙✨
+    </p>
+    <button onclick="location.reload()">Replay Surprise 🔁</button>
+  </div>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>
+
