@@ -1,147 +1,460 @@
-body {
+/* ================= RESET & MOBILE FIX ================= */
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #ffb6c1, #ff69b4);
-  color: white;
-  overflow: hidden;
-  text-align: center;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
 }
 
-/* Intro Section */
-.intro {
-  height: 100vh;
+:root {
+  --vh: 1vh;
+}
+
+body {
+  background: url("bg1.jpg") no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+}
+
+/* ================= COMMON SCREENS ================= */
+.screen {
+  height: calc(var(--vh) * 100);
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  animation: fadeIn 2s ease;
-}
-.intro h1 {
-  font-size: 2.5em;
-  text-shadow: 0 0 25px white;
-}
-#startBtn {
-  margin-top: 20px;
-  padding: 12px 30px;
-  background: white;
-  color: #ff69b4;
-  border: none;
-  border-radius: 25px;
-  font-size: 1.2em;
-  cursor: pointer;
-  box-shadow: 0 0 20px white;
-}
-#startBtn:hover {
-  background: #ff69b4;
-  color: white;
-}
-
-/* Typewriter Section */
-.message-section {
-  display: none;
-  height: 100vh;
-  padding-top: 20%;
-}
-#typewriter {
-  width: 80%;
-  margin: auto;
-  font-size: 1.5em;
-  text-shadow: 0 0 15px white;
-}
-#showPhotosBtn {
-  margin-top: 40px;
-  padding: 12px 25px;
-  background: white;
-  color: #ff69b4;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-}
-
-/* Photo Section */
-.photo-section {
-  display: none;
-  height: 100vh;
   position: relative;
-  background: linear-gradient(135deg, #ffb6c1, #ff69b4);
-  overflow: hidden;
+  padding: 16px;
 }
-.slideshow {
+
+.hidden {
+  display: none;
+}
+
+h1, h2 {
+  text-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+/* ================= MOBILE FIRST TEXT ================= */
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+#typeText {
+  width: 100%;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+/* ================= MOBILE FIRST BUTTON ================= */
+button {
+  margin-top: 25px;
+  width: 90%;
+  max-width: 320px;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #ff4d6d;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* ================= PHOTO SCREEN ================= */
+#photoScreen {
+  background: radial-gradient(circle at bottom, #1b2735, #090a0f);
+}
+
+.photoTitle {
+  margin-bottom: 15px;
+  text-shadow: 0 0 15px #ff69b4;
+}
+
+/* ================= CAROUSEL (MOBILE FIRST) ================= */
+.carousel-container {
+  width: 100%;
+  height: 380px;
+  perspective: 900px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  touch-action: pan-y;
+}
+
+.carousel {
   position: relative;
+  width: 260px;
+  height: 260px;
+  transform-style: preserve-3d;
 }
-.slideshow img {
-  max-width: 70%;
-  border-radius: 20px;
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
-  transition: transform 0.6s ease, box-shadow 0.6s ease, opacity 0.8s ease;
-  opacity: 0;
-  transform: scale(0.95);
-}
-.slideshow img.active {
-  opacity: 1;
-  transform: scale(1);
-}
-.slideshow img:hover {
-  transform: scale(0.9);
-  box-shadow: 0 0 60px white;
-}
-#finalBtn {
-  background: white;
-  color: #ff69b4;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 25px;
-  font-size: 1em;
-  cursor: pointer;
+
+.memory-card {
   position: absolute;
-  bottom: 50px;
+  width: 160px;
+  height: 220px;
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  margin-left: -80px;
+  margin-top: -110px;
+  transform-style: preserve-3d;
+  transition: filter 0.4s ease, opacity 0.4s ease;
 }
 
-/* Final Section */
-.final-section {
-  display: none;
-  height: 100vh;
-  background: black;
-  overflow: hidden;
-  position: relative;
-}
-.final-message {
-  position: absolute;
-  top: 40%;
+.card-inner {
   width: 100%;
-  color: #ffb6c1;
-  text-shadow: 0 0 25px #ff69b4;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
 }
-#replayBtn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #ff69b4;
-  border: none;
-  border-radius: 25px;
+
+.memory-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* BACK SIDE */
+.card-back {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 10, 40, 0.95),
+    rgba(60, 20, 80, 0.95)
+  );
+  color: #ffe6f2;
+  padding: 20px;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  box-shadow:
+    inset 0 0 25px rgba(255,105,180,0.25),
+    0 0 20px rgba(255,105,180,0.35);
+}
+
+.memory-card.flipped {
+  box-shadow:
+    0 0 25px rgba(255,105,180,0.6),
+    0 0 50px rgba(255,105,180,0.3);
+}
+
+/* ================= FINAL SCREEN ================= */
+#finalScreen {
+  background: radial-gradient(circle at bottom, #020111, #000000);
+  overflow: hidden;
+}
+
+#fireworks {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.finalMessage {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  text-shadow: 0 0 25px rgba(255,105,180,0.8);
+}
+
+.finalMessage h1 {
+  font-size: 1.9rem;
+  margin-bottom: 15px;
+}
+
+.finalMessage p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.finalMessage button {
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
   color: white;
-  cursor: pointer;
+  box-shadow: 0 0 30px rgba(255,105,180,0.6);
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+/* ================= BACKGROUND STARS ================= */
+.screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(2px 2px at 80% 40%, rgba(255,182,193,0.9), transparent),
+    radial-gradient(2px 2px at 50% 70%, rgba(173,216,230,0.9), transparent);
+  background-size: 180px 180px;
+  animation: starsMove 60s linear infinite;
+  z-index: 0;
+  pointer-events: none;
 }
 
-/* Floating Hearts */
-.heart {
+@keyframes starsMove {
+  from { background-position: 0 0; }
+  to   { background-position: 400px 800px; }
+}
+
+.screen > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ================= SHOOTING STAR ================= */
+.shooting-star {
   position: fixed;
-  color: pink;
-  animation: float 5s linear infinite;
+  top: -10%;
+  left: 50%;
+  width: 2px;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0.9),
+    rgba(255,255,255,0)
+  );
+  transform: rotate(25deg);
+  animation: shoot 1.2s linear forwards;
+  pointer-events: none;
 }
-@keyframes float {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-800px) scale(0.5); opacity: 0; }
+
+@keyframes shoot {
+  from {
+    transform: translate(-200px, -200px) rotate(25deg);
+    opacity: 1;
+  }
+  to {
+    transform: translate(600px, 600px) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+/* ================= DESKTOP ENHANCEMENT ================= */
+@media (min-width: 768px) {
+
+  h1 { font-size: 2.6rem; }
+  h2 { font-size: 2rem; }
+
+  #typeText {
+    font-size: 1.4rem;
+    width: 80%;
+  }
+
+  button {
+    width: auto;
+    padding: 12px 28px;
+  }
+
+  .carousel-container {
+    height: 520px;
+    perspective: 1400px;
+  }
+
+  .carousel {
+    width: 420px;
+    height: 420px;
+  }
+
+  .memory-card {
+    width: 220px;
+    height: 300px;
+    margin-left: -110px;
+    margin-top: -150px;
+  }
+
+  .finalMessage h1 {
+    font-size: 2.4rem;
+  }
+
+  .finalMessage p {
+    font-size: 1.2rem;
+  }
+}
+
+/* ================= OUR STORY TIMELINE ================= */
+
+#storyScreen {
+  background: radial-gradient(circle at top, #120b1f, #05010a);
+  overflow-y: auto;
+
+  /* FIX */
+  justify-content: flex-start;
+  padding-top: 20px;
+}
+
+
+.storyTitle {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  text-shadow: 0 0 15px rgba(255, 215, 150, 0.6);
+}
+
+/* Timeline container */
+.timeline {
+  margin: top 10px;
+
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+/* Each story block */
+.story-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ================= GOLDEN MEMORY FRAME ================= */
+
+.gold-frame {
+  width: 90%;
+  max-width: 340px;
+  padding: 6px;
+  border-radius: 22px;
+
+  background: linear-gradient(
+    135deg,
+    #f7d774,
+    #e6b65c,
+    #fff1b8,
+    #d4a44a
+  );
+
+  box-shadow:
+    0 0 15px rgba(255, 215, 150, 0.35),
+    0 0 35px rgba(255, 215, 150, 0.15);
+
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+/* Inner image */
+.gold-frame img {
+  width: 100%;
+  display: block;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+/* Hover / focus (desktop only feel) */
+.gold-frame:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 0 25px rgba(255, 215, 150, 0.6),
+    0 0 55px rgba(255, 215, 150, 0.25);
+}
+
+/* ================= GLOW VARIATIONS ================= */
+
+.glow-strong {
+  box-shadow:
+    0 0 30px rgba(255, 200, 120, 0.7),
+    0 0 70px rgba(255, 200, 120, 0.35);
+}
+
+.glow-max {
+  box-shadow:
+    0 0 45px rgba(255, 190, 110, 0.9),
+    0 0 90px rgba(255, 190, 110, 0.45);
+}
+
+/* ================= STORY TEXT ================= */
+
+.story-text {
+  margin-top: 14px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  text-align: center;
+  color: #ffe9c8;
+  text-shadow: 0 0 10px rgba(255, 200, 120, 0.25);
+  max-width: 300px;
+}
+
+/* ================= BUTTON ================= */
+
+#storyNextBtn {
+  margin-top: 25px;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  color: white;
+  box-shadow: 0 0 30px rgba(255,105,180,0.6);
+}
+
+/* ================= DESKTOP ENHANCEMENT ================= */
+
+@media (min-width: 768px) {
+
+  .storyTitle {
+    font-size: 2.2rem;
+  }
+
+  .timeline {
+    max-width: 520px;
+    gap: 50px;
+  }
+
+  .story-text {
+    font-size: 1.15rem;
+    max-width: 360px;
+  }
+
+  .gold-frame {
+    max-width: 380px;
+  }
+}
+
+
+/* ===== VIVO T2x & SIMILAR TALL PHONES FIX ===== */
+
+#storyScreen {
+  justify-content: flex-start;
+  padding-top: 16px;       /* reduced */
+  padding-bottom: 30px;    /* bottom safety */
+}
+
+/* Timeline safe start */
+.timeline {
+  margin-top: 12px;
+}
+
+/* First item never cut */
+.story-item:first-child {
+  margin-top: 12px;
+}
+
+/* Extra safety for tall screens */
+@media (max-height: 740px) {
+  #storyScreen {
+    padding-top: 12px;
+  }
+
+  .gold-frame {
+    margin-top: 4px;
+  }
 }
